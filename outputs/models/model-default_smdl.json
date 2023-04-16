@@ -1,0 +1,147 @@
+{
+  "Name": "default_handDown_handUp_mtMstLocalizer_tactileLocalizer2_visual_visualLocalizer2_model",
+  "BIDSModelVersion": "1.0.0",
+  "Description": "default BIDS stats model for handDown/handUp/mtMstLocalizer/tactileLocalizer2/visual/visualLocalizer2 task",
+  "Input": {
+    "task": [
+      "handDown",
+      "handUp",
+      "mtMstLocalizer",
+      "tactileLocalizer2",
+      "visual",
+      "visualLocalizer2"
+    ],
+    "space": ["IXI549Space"]
+  },
+  "Nodes": [
+    {
+      "Level": "Run",
+      "Name": "run",
+      "GroupBy": [
+        "run",
+        "session",
+        "subject"
+      ],
+      "Transformations": {
+        "Transformer": "",
+        "Instructions": [
+          {
+            "Name": "",
+            "Inputs": [""]
+          }
+        ]
+      },
+      "Model": {
+        "X": [
+          "trial_type.handDown_fingerWrist",
+          "trial_type.handDown_pinkyThumb",
+          "trial_type.handUp_fingerWrist",
+          "trial_type.handUp_pinkyThumb",
+          "trial_type.motion",
+          "trial_type.motion_left",
+          "trial_type.motion_right",
+          "trial_type.response",
+          "trial_type.static",
+          "trial_type.visual_horizontal",
+          "trial_type.visual_vertical",
+          "1",
+          "trans_?",
+          "rot_?",
+          "non_steady_state_outlier*",
+          "motion_outlier*"
+        ],
+        "Type": "glm",
+        "HRF": {
+          "Variables": [
+            "trial_type.handDown_fingerWrist",
+            "trial_type.handDown_pinkyThumb",
+            "trial_type.handUp_fingerWrist",
+            "trial_type.handUp_pinkyThumb",
+            "trial_type.motion",
+            "trial_type.motion_left",
+            "trial_type.motion_right",
+            "trial_type.response",
+            "trial_type.static",
+            "trial_type.visual_horizontal",
+            "trial_type.visual_vertical"
+          ],
+          "Model": "spm"
+        },
+        "Options": {
+          "HighPassFilterCutoffHz": 0.008,
+          "Mask": {
+            "desc": ["brain"],
+            "suffix": ["mask"]
+          }
+        },
+        "Software": {
+          "SPM": {
+            "SerialCorrelation": "FAST",
+            "InclusiveMaskingThreshold": 0.8
+          }
+        }
+      },
+      "Contrasts": [
+        {
+          "Name": "",
+          "ConditionList": [""],
+          "Weights": [""],
+          "Test": "t"
+        }
+      ],
+      "DummyContrasts": {
+        "Test": "t",
+        "Contrasts": [
+          "trial_type.handDown_fingerWrist",
+          "trial_type.handDown_pinkyThumb",
+          "trial_type.handUp_fingerWrist",
+          "trial_type.handUp_pinkyThumb",
+          "trial_type.motion",
+          "trial_type.motion_left",
+          "trial_type.motion_right",
+          "trial_type.response",
+          "trial_type.static",
+          "trial_type.visual_horizontal",
+          "trial_type.visual_vertical"
+        ]
+      }
+    },
+    {
+      "Level": "Subject",
+      "Name": "subject",
+      "GroupBy": [
+        "subject",
+        "contrast"
+      ],
+      "Model": {
+        "X": [1],
+        "Type": "glm"
+      },
+      "DummyContrasts": {
+        "Test": "t"
+      }
+    },
+    {
+      "Level": "Dataset",
+      "Name": "dataset",
+      "GroupBy": [""],
+      "Model": {
+        "X": [1],
+        "Type": "glm"
+      },
+      "DummyContrasts": {
+        "Test": "t"
+      }
+    }
+  ],
+  "Edges": [
+    {
+      "Source": "run",
+      "Destination": "subject"
+    },
+    {
+      "Source": "subject",
+      "Destination": "dataset"
+    }
+  ]
+}
