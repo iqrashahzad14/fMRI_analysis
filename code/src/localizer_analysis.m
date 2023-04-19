@@ -12,21 +12,22 @@ bidspm();
 bids_dir = fullfile(fileparts(mfilename('fullpath')),'..', '..','inputs','raw');
 output_dir = fullfile(fileparts(mfilename('fullpath')),'..', '..','outputs','derivatives');
 
-% subject_label = {'001','002''003','004','005','006','007','008','009','010','011','013',...
-%       '014','015','016','017','pil001','pil002','pil004','pil005'};% , '012',
+% subject_label = {'001','002','003','004','005','006','007','008','009','010','011','013',...
+%       '014','015','016','017','pil004','pil005'};% 'pil001','pil002',, '012',
 
 %% preprocess = STC, spatial normalization and smooth FWHM = 6 (default)
 % A single task must be specified for preprocessing
 % this will run preprocessing on all subjects. for a  %'participant_label', {subject_label}, ...
 
-taskList = {'visualLocalizer2','tactileLocalizer2','mtmstLocalizer'};
+taskList = {'visualLocalizer2','tactileLocalizer2','mtMstLocalizer'};
 for iTask = 1: length(taskList)
-    taskName = taskList(iTask);
+    taskName = char(taskList(iTask));
     bidspm(bids_dir, output_dir, 'subject', ... 
             'action', 'preprocess', ...
+            'participant_label', {'001','002','003','004','005','006','007','008','009','010','011','013','014','015','016','017','pil004','pil005'}, ...
             'space', {'IXI549Space'}, ...
             'fwhm', 6,...
-            'task', {'visualLocalizer2'})
+            'task', {taskName})
 end
 
 %% subject - level stats for localizers

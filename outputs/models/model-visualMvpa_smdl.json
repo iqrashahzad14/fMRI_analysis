@@ -21,8 +21,8 @@
       ],
       "Model": {
         "X": [
-          "trial_type.visual",
-          "trial_type.visual",
+          "trial_type.visual_horizontal",
+          "trial_type.visual_vertical",
           "trial_type.response",
           "trans_?",
           "rot_?",
@@ -31,8 +31,8 @@
         ],
         "HRF": {
           "Variables": [
-            "trial_type.visual",
-            "trial_type.visual",
+            "trial_type.visual_horizontal",
+            "trial_type.visual_vertical",
             "trial_type.response"
           ],
           "Model": "spm"
@@ -57,8 +57,8 @@
       },
       "DummyContrasts": {
         "Contrasts": [
-          "trial_type.visual",
-          "trial_type.visual"
+          "trial_type.visual_horizontal",
+          "trial_type.visual_vertical"
         ],
         "Test": "t"
       }
