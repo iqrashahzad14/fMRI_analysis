@@ -21,8 +21,8 @@
       ],
       "Model": {
         "X": [
-          "trial_type.visual_pinkyThumb",
-          "trial_type.visual_fingerWrist",
+          "trial_type.visual_horizontal",
+          "trial_type.visual_vertical",
           "trial_type.response",
           "trans_?",
           "rot_?",
@@ -31,8 +31,8 @@
         ],
         "HRF": {
           "Variables": [
-            "trial_type.visual_pinkyThumb",
-            "trial_type.visual_fingerWrist",
+            "trial_type.visual_horizontal",
+            "trial_type.visual_vertical",
             "trial_type.response"
           ],
           "Model": "spm"
@@ -57,17 +57,17 @@
       },
       "DummyContrasts": {
         "Contrasts": [
-          "trial_type.visual_pinkyThumb",
-          "trial_type.visual_fingerWrist"
+          "trial_type.visual_horizontal",
+          "trial_type.visual_vertical"
         ],
         "Test": "t"
       },
       "Contrasts": [
         {
-          "Name": "visual_pinkyThumb_gt_visual_fingerWrist",
+          "Name": "visual_horizontal_gt_visual_vertical",
           "ConditionList": [
-            "trial_type.visual_pinkyThumb",
-            "trial_type.visual_fingerWrist"
+            "trial_type.visual_horizontal",
+            "trial_type.visual_vertical"
           ],
           "Weights": [
             1,
@@ -76,10 +76,10 @@
           "Test": "t"
         },
         {
-          "Name": "visual_fingerWrist_gt_visual_pinkyThumb",
+          "Name": "visual_vertical_gt_visual_horizontal",
           "ConditionList": [
-            "trial_type.visual_pinkyThumb",
-            "trial_type.visual_fingerWrist"
+            "trial_type.visual_horizontal",
+            "trial_type.visual_vertical"
           ],
           "Weights": [
             -1,
