@@ -4,7 +4,8 @@ smooth='0';
 voxNb='100';
 
 subList={'001','002','003','004','005','006','007','008',...
-             '009','010','011','014','015','016','017',...
+             '009','010','011',...
+             '014','015','016','017',...
              'pil001','pil002','pil004'};%'013',,'pil005'
 
 roiList={'lhMT','rhMT','lS1','lPC', 'rPC', 'lMTt', 'rMTt'};
@@ -235,7 +236,6 @@ scatter(repmat(x(2,4), length(ext_lhMT), 1),ext_lhMT,sz,'MarkerEdgeColor',lightG
 scatter(repmat(x(1,5), length(anat_rhMT), 1),anat_rhMT,sz,'MarkerEdgeColor',darkGreen,'MarkerFaceColor','w','LineWidth',LineWidthMarkers);
 scatter(repmat(x(2,5), length(ext_rhMT), 1),ext_rhMT,sz,'MarkerEdgeColor',lightGreen,'MarkerFaceColor','w','LineWidth',LineWidthMarkers);
 
-
 % Plot the errorbars
 errorbar(x',model_series,model_error,'color',darkGreen,'linestyle','none','LineWidth',LineWidthMean/2);
 %
@@ -243,9 +243,7 @@ errorbar(x',model_series,model_error,'color',darkGreen,'linestyle','none','LineW
 hold on
 %plot chance level
 yline(0.5, '--','color', 'k','LineWidth',LineWidthMean/2)
-
 hold off
-
 
 ylim([0.25 1])
 legend({'anat-HDPT-HUPT-vs-HDFW-HUFW','ext-HUPT-HDFW-vs-HDPT-HUFW'},'Location','northeastoutside')

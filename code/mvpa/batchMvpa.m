@@ -41,7 +41,9 @@ maskSizeVoxel = calculateMaskSize(opt);
 % take the most responsive xx nb of voxels
 opt.mvpa.ratioToKeep = 100;
 
-
+opt.pathOutput = fullfile(fileparts(mfilename('fullpath')),'..', '..','outputs','derivatives',...
+      'decoding','glm_withResponse');
+  
 accuDirSel = calculateMvpaDirSelectivity(opt);
 
 accuracyFoR = calculateMvpaAcrossHandAnatExt(opt);
@@ -49,6 +51,7 @@ accuracyFoR = calculateMvpaAcrossHandAnatExt(opt);
 accuCrossModExt = crossModalExtFoR(opt);
 accuCrossModAnat = crossModalAnatFoR(opt);
 
-% modify the paths
-accuProp = calculateMvpaProp(opt);
+accuPropinSubjectSphere = calculateMvpaPropinSubjectSphere(opt);
+accuPropinGlasserMotor = calculateMvpaPropInGlasserMotor(opt);
+
 

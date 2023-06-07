@@ -1,33 +1,33 @@
 %% cluster based rois
 % follow the methods here to manually find and save your clusters
-% marsbar and som save a .mat file
+% marsbar and spm save a .mat file
 % this script reads the .mat file and the base space image that you select
 % manually to create rois, based on the resolution of the image you cretaed
 
-%step 1:
-%we can open marsbar and choose th bse space manually if the following two lines dont work
+% step 1:
+% we can open marsbar and choose th bse space manually if the following two lines dont work
 % open marsbar 
 % marsbar('on');
 % % image used for used for referencing 
 % baseImage = fullfile(fileparts(mfilename('fullpath')),'..', '..','..','derivatives','cpp_spm-stats','sub-001','stats','task-visualLocalizer2_FWHM-6','beta_0001.nii'); 
 % MARS.OPTIONS.spacebase = baseImage;
 
-% \step2:
+% step2:
 subjectList={'sub-001','sub-002','sub-003','sub-004','sub-005','sub-006','sub-007','sub-008',...
              'sub-009','sub-010','sub-011','sub-013','sub-014','sub-015','sub-016','sub-017',...
              'sub-pil004','sub-pil005'}; % sub-pil001 and sub-pil002 have no cluster/localizer
 
-opt.roi = {'lMT','lMst','lhMT','rMT','rMst','rhMT' };%{'lhMT','rhMT','lS1','lPC', 'rPC', 'lMTt', 'rMTt'};
+opt.roi = {'lMT','lMst','lhMT','rMT','rMst','rhMT' };
 
 for iSub = 1:length(subjectList)
     subID= subjectList(iSub);
 
     % where to read the rois
-    opt.inputDir = fullfile(fileparts(mfilename('fullpath')),'..', '..','outputs','derivatives','cluster-roi','subjectCluster_base2pt6',char(subID));
+    opt.inputDir = fullfile(fileparts(mfilename('fullpath')),'..', '..','outputs','derivatives','cluster-roi-method1','subjectCluster_base2pt6',char(subID));
     inputMaskDir = opt.inputDir;
     
     % where to save the new masks with new reference image
-    opt.outputDir = fullfile(fileparts(mfilename('fullpath')),'..', '..','outputs','derivatives','cluster-roi','subjectCluster_base2pt6',char(subID));
+    opt.outputDir = fullfile(fileparts(mfilename('fullpath')),'..', '..','outputs','derivatives','cluster-roi-method1','subjectCluster_base2pt6',char(subID));
     if ~exist(opt.outputDir)
            mkdir(opt.outputDir)
     end

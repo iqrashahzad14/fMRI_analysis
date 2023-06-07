@@ -11,7 +11,7 @@ function opt = getOptionMvpa()
   % suject to run in each group
   opt.subjects = {'001','002','003','004','005','006','007','008',...
              '009','010','011','014','015','016','017',...
-             'pil001','pil002','pil004'};%'013',,'pil005'
+             'pil001','pil002','pil004'};%'013','pil005'
          
   % Uncomment the lines below to run preprocessing
   % - don't use realign and unwarp
@@ -54,7 +54,7 @@ function opt = getOptionMvpa()
   opt.maskRadiusNb=8;
 
   % define the 4D maps to be used
-  opt.funcFWHM = 0;
+  opt.funcFWHM = 2;
 
 %   % take the most responsive xx nb of voxels
 %   opt.mvpa.ratioToKeep = 120; % 120, 224, 368, 100 150 250 350 420

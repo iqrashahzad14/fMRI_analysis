@@ -1,11 +1,11 @@
 
 im='beta';%'t_maps', 'beta'
-smooth='0';
+smooth='2';
 voxNb='100';
 
 subList={'001','002','003','004','005','006','007','008',...
              '009','010','011','014','015','016','017',...
-             'pil001','pil002','pil004','pil005'};%'013',
+             'pil001','pil002','pil004'};%'013',,'pil005'
          
 roiList={'lhMT','rhMT','lS1','lPC', 'rPC', 'lMTt', 'rMTt'};
 decodingConditionList = {'trainVisual_testTactile','trainTactile_testVision','both'};

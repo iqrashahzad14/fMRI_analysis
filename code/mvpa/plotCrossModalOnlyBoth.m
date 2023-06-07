@@ -149,17 +149,17 @@ FontName='Avenir'; %set the style of the labels
 FontSize=17; %%set the size of the labels
 %%
 
-figure(1)
+figure(3)
 
 model_series = [mean(both_lS1);...
        mean(both_lPC); mean(both_rPC);... 
-       mean(both_lhMT); mean(both_rhMT);...
-       mean(both_lMTt); mean(both_rMTt)];
+       mean(both_lMTt); mean(both_rMTt);...
+       mean(both_lhMT); mean(both_rhMT)];
 
 model_error = [std(both_lS1)/sqrt(length(subList)); ...
     std(both_lPC)/sqrt(length(subList)); std(both_rPC)/sqrt(length(subList));...
-    std(both_lhMT)/sqrt(length(subList)); std(both_rhMT)/sqrt(length(subList));...
-     std(both_lMTt)/sqrt(length(subList)); std(both_rMTt)/sqrt(length(subList))];
+     std(both_lMTt)/sqrt(length(subList)); std(both_rMTt)/sqrt(length(subList));...
+     std(both_lhMT)/sqrt(length(subList)); std(both_rhMT)/sqrt(length(subList))];
 
 % b = bar(model_series, 'grouped'); 
 b = bar(model_series, 0.5, 'FaceColor','flat', 'LineWidth',LineWidthMean/2 );
@@ -202,33 +202,18 @@ end
 hold on
 
 sz=40;
-
-% scatter(repmat(x(1,1), length(trainVis_lS1), 1),trainVis_lS1,sz,'MarkerEdgeColor','k','MarkerFaceColor','k');
-% scatter(repmat(x(2,1), length(trainTac_lS1), 1),trainTac_lS1,sz,'MarkerEdgeColor','k','MarkerFaceColor','k');
 scatter(repmat(x(1,1), length(both_lS1), 1),both_lS1,sz,'MarkerEdgeColor',darkPurple,'MarkerFaceColor','w','LineWidth',LineWidthMarkers);
 
-% scatter(repmat(x(1,2), length(trainVis_lPC), 1),trainVis_lPC,sz,'MarkerEdgeColor','k','MarkerFaceColor','k');
-% scatter(repmat(x(2,2), length(trainTac_lPC), 1),trainTac_lPC,sz,'MarkerEdgeColor','k','MarkerFaceColor','k');
 scatter(repmat(x(1,2), length(both_lPC), 1),both_lPC,sz,'MarkerEdgeColor',darkPurple,'MarkerFaceColor','w','LineWidth',LineWidthMarkers);
 
-% scatter(repmat(x(1,3), length(trainVis_rPC), 1),trainVis_rPC,sz,'MarkerEdgeColor','k','MarkerFaceColor','k');
-% scatter(repmat(x(2,3), length(trainTac_rPC), 1),trainTac_rPC,sz,'MarkerEdgeColor','k','MarkerFaceColor','k');
 scatter(repmat(x(1,3), length(both_rPC), 1),both_rPC,sz,'MarkerEdgeColor',darkPurple,'MarkerFaceColor','w','LineWidth',LineWidthMarkers);
 
-% scatter(repmat(x(1,4), length(trainVis_lMTt), 1),trainVis_lMTt,sz,'MarkerEdgeColor','k','MarkerFaceColor','k')
-% scatter(repmat(x(2,4), length(trainTac_lMTt), 1),trainTac_lMTt,sz,'MarkerEdgeColor','k','MarkerFaceColor','k');
 scatter(repmat(x(1,4), length(both_lMTt), 1),both_lMTt,sz,'MarkerEdgeColor',darkPurple,'MarkerFaceColor','w','LineWidth',LineWidthMarkers);
 
-% scatter(repmat(x(1,5), length(trainVis_rMTt), 1),trainVis_rMTt,sz,'MarkerEdgeColor','k','MarkerFaceColor','k');
-% scatter(repmat(x(2,5), length(trainTac_rMTt), 1),trainTac_rMTt,sz,'MarkerEdgeColor','k','MarkerFaceColor','k');
 scatter(repmat(x(1,5), length(both_rMTt), 1),both_rMTt,sz,'MarkerEdgeColor',darkPurple,'MarkerFaceColor','w','LineWidth',LineWidthMarkers);
 
-% scatter(repmat(x(1,6), length(trainVis_lhMT), 1),trainVis_lhMT,sz,'MarkerEdgeColor','k','MarkerFaceColor','k');%,'MarkerFaceColor','k');
-% scatter(repmat(x(2,6), length(trainTac_lhMT), 1),trainTac_lhMT,sz,'MarkerEdgeColor','k','MarkerFaceColor','k');
 scatter(repmat(x(1,6), length(both_lhMT), 1),both_lhMT,sz,'MarkerEdgeColor',darkPurple,'MarkerFaceColor','w','LineWidth',LineWidthMarkers);
 
-% scatter(repmat(x(1,7), length(trainVis_rhMT), 1),trainVis_rhMT,sz,'MarkerEdgeColor','k','MarkerFaceColor','k');
-% scatter(repmat(x(2,7), length(trainTac_rhMT), 1),trainTac_rhMT,sz,'MarkerEdgeColor','k','MarkerFaceColor','k');
 scatter(repmat(x(1,7), length(both_rhMT), 1),both_rhMT,sz,'MarkerEdgeColor',darkPurple,'MarkerFaceColor','w','LineWidth',LineWidthMarkers);
 
 % Plot the errorbars
@@ -243,8 +228,8 @@ ylim([0.25 0.8])
 legend({'both' },'Location','northeast')
 xlabel('ROI') 
 ylabel('Decoding Accuracy')
-xticklabels({'lS1','lPC', 'rPC', 'lhMT','rhMT','lMTt', 'rMTt'})
-head1= 'CrossModal-Anat'; 
+xticklabels({'lS1','lPC', 'rPC', 'lMTt','rMTt','lhMT','rhMT'})
+head1= 'CrossModal-Ext'; 
 head2=strcat('image=', im,' smoothing=',smooth,' ', ' voxelNb=',voxNb);
 title(head1, head2)
 

@@ -1,0 +1,66 @@
+{
+  "Name": "visual MVPA",
+  "BIDSModelVersion": "1.0.0",
+  "Description": "contrasts for the visual dataset used for mvpa",
+  "Input": {
+    "task": [
+      "visual"
+    ],
+    "space": [
+      "IXI549Space"
+    ]
+  },
+  "Nodes": [
+    {
+      "Level": "Run",
+      "Name": "run_level",
+      "GroupBy": [
+        "run",
+        "session",
+        "subject"
+      ],
+      "Model": {
+        "X": [
+          "trial_type.visual_horizontal",
+          "trial_type.visual_vertical",
+          "trans_?",
+          "rot_?",
+          "non_steady_state_outlier*",
+          "motion_outlier*"
+        ],
+        "HRF": {
+          "Variables": [
+            "trial_type.visual_horizontal",
+            "trial_type.visual_vertical"
+          ],
+          "Model": "spm"
+        },
+        "Type": "glm",
+        "Options": {
+          "HighPassFilterCutoffHz": 0.0078,
+          "Mask": {
+            "suffix": [
+              "mask"
+            ],
+            "desc": [
+              "brain"
+            ]
+          }
+        },
+        "Software": {
+          "SPM": {
+            "SerialCorrelation": "FAST",
+            "InclusiveMaskingThreshold": 0
+          }
+        }
+      },
+      "DummyContrasts": {
+        "Contrasts": [
+          "trial_type.visual_horizontal",
+          "trial_type.visual_vertical"
+        ],
+        "Test": "t"
+      }
+    }   
+  ]
+}

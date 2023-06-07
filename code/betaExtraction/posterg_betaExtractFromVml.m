@@ -110,7 +110,6 @@ betaVal = [betaEstMotion1, betaEstStatic1,betaEstMotion2, betaEstStatic2,...
     betaEstMotion3, betaEstStatic3,betaEstMotion4, betaEstStatic4,...
     betaEstMotion5, betaEstStatic5,betaEstMotion6, betaEstStatic6, betaEstMotion7, betaEstStatic7];
 
-
 %%
 %settings for plots
 shape='o';
@@ -152,20 +151,27 @@ model_series = [mean(betaEstMotion1), mean(betaEstStatic1);...
     mean(betaEstMotion6), mean(betaEstStatic6);...
     mean(betaEstMotion7), mean(betaEstStatic7)];
 
+model_error = [std(betaEstMotion1)/length(betaEstMotion1), std(betaEstStatic1)/length(betaEstStatic1);...
+    std(betaEstMotion2)/length(betaEstMotion2), std(betaEstStatic2)/length(betaEstStatic2);...
+    std(betaEstMotion3)/length(betaEstMotion3), std(betaEstStatic3)/length(betaEstStatic3);...
+    std(betaEstMotion4)/length(betaEstMotion4), std(betaEstStatic4)/length(betaEstStatic4);...
+    std(betaEstMotion5)/length(betaEstMotion5), std(betaEstStatic5)/length(betaEstStatic5);...
+    std(betaEstMotion6)/length(betaEstMotion6), std(betaEstStatic6)/length(betaEstStatic6);...
+    std(betaEstMotion7)/length(betaEstMotion7), std(betaEstStatic7)/length(betaEstStatic7)];
 
 % b = bar(model_series, 'grouped');
 b = bar(model_series, 'grouped','FaceColor','flat', 'LineWidth',LineWidthMean/2 );
 
-b(1).EdgeColor = lightGreen;
+b(1).EdgeColor = darkOrange;
 b(2).EdgeColor = lightOrange;
 
-b(1).CData(1,:) = lightGreen;%'w';%Colors(2,:); % group 1 1st bar
-b(1).CData(2,:) = lightGreen;%'w';%Colors(2,:); % group 1 2nd bar
-b(1).CData(3,:) = lightGreen;%'w';%Colors(2,:); % group 1 3rd bar
-b(1).CData(4,:) = lightGreen;%'w';%Colors(2,:); % group 1
-b(1).CData(5,:) = lightGreen;%'w';%Colors(2,:); % group 1
-b(1).CData(6,:) = lightGreen;%'w';%Colors(2,:); % group 1
-b(1).CData(7,:) = lightGreen;%'w';%Colors(2,:); % group 1
+b(1).CData(1,:) = darkOrange;%'w';%Colors(2,:); % group 1 1st bar
+b(1).CData(2,:) = darkOrange;%'w';%Colors(2,:); % group 1 2nd bar
+b(1).CData(3,:) = darkOrange;%'w';%Colors(2,:); % group 1 3rd bar
+b(1).CData(4,:) = darkOrange;%'w';%Colors(2,:); % group 1
+b(1).CData(5,:) = darkOrange;%'w';%Colors(2,:); % group 1
+b(1).CData(6,:) = darkOrange;%'w';%Colors(2,:); % group 1
+b(1).CData(7,:) = darkOrange;%'w';%Colors(2,:); % group 1
 
 b(2).CData(1,:) = lightOrange;%'w';%Colors(4,:); % group 2 1st bar
 b(2).CData(2,:) = lightOrange;%'w';%Colors(4,:); % group 2 2nd bar
@@ -186,53 +192,47 @@ end
 hold on
 
 % Plot the errorbars
-% errorbar(x',model_series,model_error,'k','linestyle','none','LineWidth',LineWidthMean/2);
+errorbar(x',model_series,model_error,'k','linestyle','none','LineWidth',LineWidthMean/2);
+
+% sz=20;
+% scatter(repmat(x(1,1), length(betaEstMotion1), 1),betaEstMotion1,sz,'MarkerEdgeColor','k','MarkerFaceColor','k');
+% scatter(repmat(x(2,1), length(betaEstStatic1), 1),betaEstStatic1,sz,'MarkerEdgeColor','k','MarkerFaceColor','k');
 % 
-
-sz=20;
-scatter(repmat(x(1,1), length(betaEstMotion1), 1),betaEstMotion1,sz,'MarkerEdgeColor','k','MarkerFaceColor','k');
-scatter(repmat(x(2,1), length(betaEstStatic1), 1),betaEstStatic1,sz,'MarkerEdgeColor','k','MarkerFaceColor','k');
-
-
-scatter(repmat(x(1,2), length(betaEstMotion2), 1),betaEstMotion2,sz,'MarkerEdgeColor','k','MarkerFaceColor','k');
-scatter(repmat(x(2,2), length(betaEstStatic2), 1),betaEstStatic2,sz,'MarkerEdgeColor','k','MarkerFaceColor','k');
-
-scatter(repmat(x(1,3), length(betaEstMotion3), 1),betaEstMotion3,sz,'MarkerEdgeColor','k','MarkerFaceColor','k');
-scatter(repmat(x(2,3), length(betaEstStatic3), 1),betaEstStatic3,sz,'MarkerEdgeColor','k','MarkerFaceColor','k');
-
-
-scatter(repmat(x(1,4), length(betaEstMotion4), 1),betaEstMotion4,sz,'MarkerEdgeColor','k','MarkerFaceColor','k');
-scatter(repmat(x(2,4), length(betaEstStatic4), 1),betaEstStatic4,sz,'MarkerEdgeColor','k','MarkerFaceColor','k');
-
-scatter(repmat(x(1,5), length(betaEstMotion5), 1),betaEstMotion5,sz,'MarkerEdgeColor','k','MarkerFaceColor','k');
-scatter(repmat(x(2,5), length(betaEstStatic5), 1),betaEstStatic5,sz,'MarkerEdgeColor','k','MarkerFaceColor','k');
-
-
-scatter(repmat(x(1,6), length(betaEstMotion6), 1),betaEstMotion6,sz,'MarkerEdgeColor','k','MarkerFaceColor','k');
-scatter(repmat(x(2,6), length(betaEstStatic6), 1),betaEstStatic6,sz,'MarkerEdgeColor','k','MarkerFaceColor','k');
-
-scatter(repmat(x(1,7), length(betaEstMotion7), 1),betaEstMotion7,sz,'MarkerEdgeColor','k','MarkerFaceColor','k');
-scatter(repmat(x(2,7), length(betaEstStatic7), 1),betaEstStatic7,sz,'MarkerEdgeColor','k','MarkerFaceColor','k');
-
-
+% scatter(repmat(x(1,2), length(betaEstMotion2), 1),betaEstMotion2,sz,'MarkerEdgeColor','k','MarkerFaceColor','k');
+% scatter(repmat(x(2,2), length(betaEstStatic2), 1),betaEstStatic2,sz,'MarkerEdgeColor','k','MarkerFaceColor','k');
+% 
+% scatter(repmat(x(1,3), length(betaEstMotion3), 1),betaEstMotion3,sz,'MarkerEdgeColor','k','MarkerFaceColor','k');
+% scatter(repmat(x(2,3), length(betaEstStatic3), 1),betaEstStatic3,sz,'MarkerEdgeColor','k','MarkerFaceColor','k');
+% 
+% scatter(repmat(x(1,4), length(betaEstMotion4), 1),betaEstMotion4,sz,'MarkerEdgeColor','k','MarkerFaceColor','k');
+% scatter(repmat(x(2,4), length(betaEstStatic4), 1),betaEstStatic4,sz,'MarkerEdgeColor','k','MarkerFaceColor','k');
+% 
+% scatter(repmat(x(1,5), length(betaEstMotion5), 1),betaEstMotion5,sz,'MarkerEdgeColor','k','MarkerFaceColor','k');
+% scatter(repmat(x(2,5), length(betaEstStatic5), 1),betaEstStatic5,sz,'MarkerEdgeColor','k','MarkerFaceColor','k');
+% 
+% scatter(repmat(x(1,6), length(betaEstMotion6), 1),betaEstMotion6,sz,'MarkerEdgeColor','k','MarkerFaceColor','k');
+% scatter(repmat(x(2,6), length(betaEstStatic6), 1),betaEstStatic6,sz,'MarkerEdgeColor','k','MarkerFaceColor','k');
+% 
+% scatter(repmat(x(1,7), length(betaEstMotion7), 1),betaEstMotion7,sz,'MarkerEdgeColor','k','MarkerFaceColor','k');
+% scatter(repmat(x(2,7), length(betaEstStatic7), 1),betaEstStatic7,sz,'MarkerEdgeColor','k','MarkerFaceColor','k');
 
 % Plot connected lines
-for iiSub=1:length(subjectList)
-    hold on 
-    plot([x(1,1), x(2,1)],[betaEstMotion1(iiSub), betaEstStatic1(iiSub)],'k')
-    hold on 
-    plot([x(1,2), x(2,2)],[betaEstMotion2(iiSub), betaEstStatic2(iiSub)],'k') 
-    hold on 
-    plot([x(1,3), x(2,3)],[betaEstMotion3(iiSub), betaEstStatic3(iiSub)],'k')  
-    hold on 
-    plot([x(1,4), x(2,4)],[betaEstMotion4(iiSub), betaEstStatic4(iiSub)],'k')
-    hold on 
-    plot([x(1,5), x(2,5)],[betaEstMotion5(iiSub), betaEstStatic5(iiSub)],'k')    
-    hold on 
-    plot([x(1,6), x(2,6)],[betaEstMotion6(iiSub), betaEstStatic6(iiSub)],'k')
-    hold on 
-    plot([x(1,7), x(2,7)],[betaEstMotion7(iiSub), betaEstStatic7(iiSub)],'k')
-end
+% for iiSub=1:length(subjectList)
+%     hold on 
+%     plot([x(1,1), x(2,1)],[betaEstMotion1(iiSub), betaEstStatic1(iiSub)],'k')
+%     hold on 
+%     plot([x(1,2), x(2,2)],[betaEstMotion2(iiSub), betaEstStatic2(iiSub)],'k') 
+%     hold on 
+%     plot([x(1,3), x(2,3)],[betaEstMotion3(iiSub), betaEstStatic3(iiSub)],'k')  
+%     hold on 
+%     plot([x(1,4), x(2,4)],[betaEstMotion4(iiSub), betaEstStatic4(iiSub)],'k')
+%     hold on 
+%     plot([x(1,5), x(2,5)],[betaEstMotion5(iiSub), betaEstStatic5(iiSub)],'k')    
+%     hold on 
+%     plot([x(1,6), x(2,6)],[betaEstMotion6(iiSub), betaEstStatic6(iiSub)],'k')
+%     hold on 
+%     plot([x(1,7), x(2,7)],[betaEstMotion7(iiSub), betaEstStatic7(iiSub)],'k')
+% end
 
 hold on
 %plot chance level
@@ -241,7 +241,7 @@ hold on
 hold off
 
 
-% ylim([0.25 1])
+ylim([-0.3 2])
 legend({'motion','static'},'Location','northeastoutside')
 xlabel('ROI') 
 ylabel('Beta values')

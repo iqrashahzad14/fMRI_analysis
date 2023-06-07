@@ -2,7 +2,7 @@
 
 % this script reads the .mat file and the base space image that you select
 % manually to create rois
-% this script uses som and marsbar
+% this script uses spm and marsbar
 
 % step 0:
 % follow the methods here to manually find and save your clusters
@@ -28,11 +28,11 @@ for iSub = 1:length(subjectList)
     subID= subjectList(iSub);
 
     % where to read the rois
-    opt.inputDir = fullfile(fileparts(mfilename('fullpath')),'..', '..','outputs','derivatives','cluster-roi','subjectCluster',char(subID));
+    opt.inputDir = fullfile(fileparts(mfilename('fullpath')),'..', '..','outputs','derivatives','cluster-roi-method1','subjectCluster_base2pt6',char(subID));
     inputMaskDir = opt.inputDir;
     
     % where to save the new masks with new reference image
-    opt.outputDir = fullfile(fileparts(mfilename('fullpath')),'..', '..','outputs','derivatives','cluster-roi','subjectCluster',char(subID));
+    opt.outputDir = fullfile(fileparts(mfilename('fullpath')),'..', '..','outputs','derivatives','cluster-roi-method1','subjectCluster',char(subID));
     if ~exist(opt.outputDir)
            mkdir(opt.outputDir)
     end

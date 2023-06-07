@@ -6,6 +6,7 @@ voxNb='100';
 subList={'001','002','003','004','005','006','007','008',...
              '009','010','011','014','015','016','017',...
              'pil001','pil002','pil004'};%'013',,'pil005'
+% subList={'001'};
   
 roiList={'lhMT','rhMT','lS1','lPC', 'rPC', 'lMTt', 'rMTt'};
 decodingConditionList = {'handDown_pinkyThumb_vs_handDown_fingerWrist', 'handUp_pinkyThumb_vs_handUp_fingerWrist',...
@@ -304,11 +305,8 @@ for i = 1:nbars
 end
 hold on
 
-
-% 
 sz=40;
 scatter(repmat(x(1,1), length(visDir_lS1), 1),visDir_lS1,sz,'MarkerEdgeColor',darkOrange,'MarkerFaceColor','w','LineWidth',LineWidthMarkers);
-
 
 scatter(repmat(x(1,2), length(visDir_lPC), 1),visDir_lPC,sz,'MarkerEdgeColor',darkOrange,'MarkerFaceColor','w','LineWidth',LineWidthMarkers);
 

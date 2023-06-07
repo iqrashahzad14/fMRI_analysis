@@ -1,0 +1,66 @@
+{
+  "Name": "handDown MVPA",
+  "BIDSModelVersion": "1.0.0",
+  "Description": "contrasts for the hand Down dataset used for mvpa",
+  "Input": {
+    "task": [
+      "handDown"
+    ],
+    "space": [
+      "IXI549Space"
+    ]
+  },
+  "Nodes": [
+    {
+      "Level": "Run",
+      "Name": "run_level",
+      "GroupBy": [
+        "run",
+        "session",
+        "subject"
+      ],
+      "Model": {
+        "X": [
+          "trial_type.handDown_pinkyThumb",
+          "trial_type.handDown_fingerWrist",
+          "trans_?",
+          "rot_?",
+          "non_steady_state_outlier*",
+          "motion_outlier*"
+        ],
+        "HRF": {
+          "Variables": [
+            "trial_type.handDown_pinkyThumb",
+            "trial_type.handDown_fingerWrist"
+          ],
+          "Model": "spm"
+        },
+        "Type": "glm",
+        "Options": {
+          "HighPassFilterCutoffHz": 0.0078,
+          "Mask": {
+            "suffix": [
+              "mask"
+            ],
+            "desc": [
+              "brain"
+            ]
+          }
+        },
+        "Software": {
+          "SPM": {
+            "SerialCorrelation": "FAST",
+            "InclusiveMaskingThreshold": 0
+          }
+        }
+      },
+      "DummyContrasts": {
+        "Contrasts": [
+          "trial_type.handDown_pinkyThumb",
+          "trial_type.handDown_fingerWrist"
+        ],
+        "Test": "t"
+      }
+    }   
+  ]
+}
